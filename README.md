@@ -129,8 +129,6 @@ This project is provided for educational/demo purposes. No license is specified 
 
 ---
 
-If you'd like, I can also add badges, screenshots, or a short demo GIF to the README.
-
 ## 🚀 Features
 
 ### Core Features
@@ -222,9 +220,7 @@ The website is fully responsive and optimized for:
 - API for third-party integrations
 - Multi-language support
 
-## 📄 License
 
-This is a clone project for educational purposes.
 
 ## 🤝 Contributing
 
@@ -233,4 +229,5 @@ Feel free to fork this project and submit pull requests for any improvements!
 ---
 
 Built with ❤️ using Next.js and Tailwind CSS
+
 
