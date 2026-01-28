@@ -10,26 +10,37 @@ import MediaGallery from '@/components/MediaGallery'
 
 export default function MediaDetailPage() {
   const params = useParams()
-  const id = parseInt(params.id as string)
+  const rawId = params.id as string
+  const id = parseInt(rawId, 10)
   const [media, setMedia] = useState<MediaItem | null>(null)
   const [relatedMedia, setRelatedMedia] = useState<MediaItem[]>([])
 
   useEffect(() => {
+    if (Number.isNaN(id) || id < 1) {
+      setMedia(null)
+      return
+    }
     const foundMedia = mockMedia.find((item) => item.id === id)
     if (foundMedia) {
       setMedia(foundMedia)
-      // Get related media (same category, different item)
       const related = mockMedia
         .filter((item) => item.category === foundMedia.category && item.id !== foundMedia.id)
         .slice(0, 12)
       setRelatedMedia(related)
+    } else {
+      setMedia(null)
     }
   }, [id])
 
-  if (!media) {
+  if (Number.isNaN(id) || id < 1 || !media) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <p className="text-gray-500">Media not found</p>
+        <div className="text-center">
+          <p className="text-muted-foreground mb-4">Media not found</p>
+          <Link href="/photos" className="text-primary hover:underline font-medium">
+            Browse photos
+          </Link>
+        </div>
       </div>
     )
   }
